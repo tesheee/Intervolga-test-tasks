@@ -1,0 +1,86 @@
+<body>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      .header {
+        top: 0;
+        width: 100%;
+      }
+      .footer {
+        margin-top: auto;
+      }
+      .content {
+        background: yellow;
+        height: fit-content;
+      }
+      .side-1 {
+        background: green;
+        width: 300px;
+      }
+      .side-2 {
+        background: red;
+        width: 300px;
+      }
+    }
+    div {
+      background: #ccc;
+    }
+    .content-image {
+      float: left;
+    }
+    .content-container {
+      display: flex;
+      flex-direction: row;
+    }
+    @media (max-width: 868px) {
+      .content-container {
+        display: flex;
+        flex-direction: column;
+      }
+      .main {
+        .side-2 {
+          order: 3;
+          width: auto;
+        }
+        .side-1 {
+          order: 1;
+          width: auto;
+        }
+        .content {
+          order: 2;
+        }
+      }
+      .side-container {
+        display: contents;
+      }
+    }
+  </style>
+  <div class="main">
+    <div class="header">Шапка</div>
+    <div class="content-container">
+      <div class="side-container">
+        <div class="side-1">Контент</div>
+        <div class="side-2">Контент</div>
+      </div>
+      <div class="content">
+        <img
+          class="content-image"
+          src="https://www.eltiempoen.es/wp-content/uploads/2016/07/banner300x250.gif"
+        />
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed placeat,
+        deleniti a delectus porro quae nihil voluptatem suscipit fugit, esse
+        officia labore animi maxime. Beatae, doloribus error. Nisi, autem
+        magnam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure
+        aperiam est aut ducimus magnam vero, odio quibusdam esse ullam nesciunt
+      </div>
+    </div>
+
+    <div class="footer">Подвал</div>
+  </div>
+</body>

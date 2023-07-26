@@ -1,0 +1,161 @@
+<body>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .form_background {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: #0006;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .form_foreground {
+      border: 1px solid black;
+      background-color: white;
+      width: 450px;
+      height: 890px;
+    }
+    .form_content {
+      padding: 30px;
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+    input {
+      height: 45px;
+      padding-left: 15px;
+      padding-right: 15px;
+      width: 100%;
+    }
+    .form_input {
+      margin-bottom: 5px;
+    }
+    .send_button {
+      padding-left: 20px;
+      padding-right: 20px;
+      background-color: black;
+      border: 1px solid black;
+      color: white;
+      border-radius: 7px;
+      height: 50px;
+      width: 135px;
+      margin-right: 5px;
+    }
+    .cancel_button {
+      padding-left: 20px;
+      padding-right: 20px;
+      background-color: white;
+      border: 1px solid black;
+      color: black;
+      border-radius: 7px;
+      height: 50px;
+      width: 135px;
+      margin-right: 5px;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  </style>
+  <div class="main">
+    <div class="form_background">
+      <div class="form_foreground">
+        <form class="form_content">
+          <h1>Транспортные средства и водители</h1>
+          <div class="form_input">
+            <p>Гос-номер</p>
+            <input
+              placeholder="Укажите гос-номер"
+              pattern="[А-Я]{1}[0-9]{3}[А-Я]{2}[0-9]{3}"
+              required
+              name="gov_number"
+            />
+          </div>
+          <div class="form_input">
+            <p>Транспортное средство</p>
+            <input
+              placeholder="Транспортное средство"
+              required
+              name="vehicle"
+            />
+          </div>
+          <div class="form_input">
+            <p>Ориентация дата прибытия к покупателю</p>
+            <input
+              type="date"
+              placeholder="Дата"
+              required
+              name="arrival_date"
+            />
+          </div>
+          <h3>Данные о водителе</h3>
+          <div class="form_input">
+            <p>ФИО</p>
+            <input
+              placeholder="Укажите ФИО водителя"
+              required
+              name="driver_fio"
+            />
+          </div>
+          <div class="form_input">
+            <p>Паспортные данные</p>
+            <div style="display: flex; gap: 10px">
+              <input
+                placeholder="Серия"
+                required
+                maxlength="4"
+                pattern="[0-9]{4}"
+                name="pass_series"
+              />
+              <input
+                placeholder="Номер"
+                required
+                maxlength="6"
+                pattern="[0-9]{6}"
+                name="pass_number"
+              />
+            </div>
+          </div>
+          <div class="form_input">
+            <p>Кем выдан</p>
+            <input placeholder="Кем выдан" required name="issued_name" />
+          </div>
+          <div class="form_input">
+            <p>Когда выдан</p>
+            <input placeholder="Когда выдан" required name="issued_date" />
+          </div>
+          <div>
+            <button type="submit" class="send_button">Отправить</button>
+            <button class="cancel_button">Отменить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("input").forEach(function (e) {
+        if (e.value === "")
+          e.value = window.localStorage.getItem(e.name, e.value);
+        e.addEventListener("input", function () {
+          window.localStorage.setItem(e.name, e.value);
+        });
+      });
+    });
+
+    document.querySelector(".cancel_button").addEventListener("click", (e) => {
+      e.preventDefault();
+    });
+  </script>
+</body>
